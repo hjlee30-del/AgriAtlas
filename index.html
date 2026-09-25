@@ -1,18 +1,325 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>AgriAtlas</title>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>AgriAtlas | Global Agriculture Explorer</title>
+
+    <link rel="stylesheet" href="style.css">
+
 </head>
+
 
 <body>
 
-    <h1>🌎 AgriAtlas</h1>
 
-    <p>
-        Explore agriculture, crops, varieties,
-        and growing seasons around the world.
-    </p>
+    <!-- Navigation -->
+
+    <nav>
+
+        <div class="logo">
+            🌱 AgriAtlas
+        </div>
+
+        <div class="nav-links">
+
+            <a href="#">Home</a>
+            <a href="#">Explore</a>
+            <a href="#">About</a>
+
+        </div>
+
+    </nav>
+
+
+
+    <!-- Hero Section -->
+
+    <header class="hero">
+
+        <div class="hero-content">
+
+            <p class="eyebrow">
+                GLOBAL AGRICULTURAL EXPLORER
+            </p>
+
+            <h1>
+                Discover how the world grows.
+            </h1>
+
+            <p class="hero-description">
+
+                Explore crops, varieties, climates,
+                and growing seasons across countries
+                and regions around the world.
+
+            </p>
+
+            <a href="#explorer" class="hero-button">
+                Explore Crops ↓
+            </a>
+
+        </div>
+
+    </header>
+
+
+
+    <!-- Explorer -->
+
+    <main id="explorer">
+
+        <section class="explorer-section">
+
+            <div class="section-heading">
+
+                <p class="eyebrow">
+                    EXPLORE
+                </p>
+
+                <h2>
+                    Global Crop Explorer
+                </h2>
+
+                <p>
+                    Select a country and crop to discover
+                    its agricultural characteristics.
+                </p>
+
+            </div>
+
+
+
+            <!-- Selection -->
+
+            <div class="selection-panel">
+
+                <div class="selector">
+
+                    <label for="country">
+                        Country
+                    </label>
+
+                    <select id="country">
+
+                        <option value="">
+                            Select a country
+                        </option>
+
+                        <option value="korea">
+                            🇰🇷 South Korea
+                        </option>
+
+                        <option value="japan">
+                            🇯🇵 Japan
+                        </option>
+
+                        <option value="india">
+                            🇮🇳 India
+                        </option>
+
+                        <option value="brazil">
+                            🇧🇷 Brazil
+                        </option>
+
+                        <option value="usa">
+                            🇺🇸 United States
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <div class="selector">
+
+                    <label for="crop">
+                        Crop
+                    </label>
+
+                    <select id="crop">
+
+                        <option value="">
+                            Select a crop
+                        </option>
+
+                        <option value="rice">
+                            🌾 Rice
+                        </option>
+
+                        <option value="wheat">
+                            🌾 Wheat
+                        </option>
+
+                        <option value="corn">
+                            🌽 Corn
+                        </option>
+
+                        <option value="coffee">
+                            ☕ Coffee
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <button onclick="showCrop()">
+                    Explore
+                </button>
+
+            </div>
+
+
+
+            <!-- Crop Information -->
+
+            <section id="crop-info" class="crop-card">
+
+                <div class="empty-state">
+
+                    <div class="empty-icon">
+                        🌱
+                    </div>
+
+                    <h3>
+                        Select a crop to begin
+                    </h3>
+
+                    <p>
+                        Choose a country and crop above
+                        to explore agricultural information.
+                    </p>
+
+                </div>
+
+            </section>
+
+
+
+            <!-- Season Timeline -->
+
+            <section class="season-section">
+
+                <div class="section-heading">
+
+                    <p class="eyebrow">
+                        AGRICULTURAL CALENDAR
+                    </p>
+
+                    <h2>
+                        Growing Season
+                    </h2>
+
+                </div>
+
+
+                <div class="timeline">
+
+                    <div class="month" id="jan">
+                        <span>JAN</span>
+                    </div>
+
+                    <div class="month" id="feb">
+                        <span>FEB</span>
+                    </div>
+
+                    <div class="month" id="mar">
+                        <span>MAR</span>
+                    </div>
+
+                    <div class="month" id="apr">
+                        <span>APR</span>
+                    </div>
+
+                    <div class="month" id="may">
+                        <span>MAY</span>
+                    </div>
+
+                    <div class="month" id="jun">
+                        <span>JUN</span>
+                    </div>
+
+                    <div class="month" id="jul">
+                        <span>JUL</span>
+                    </div>
+
+                    <div class="month" id="aug">
+                        <span>AUG</span>
+                    </div>
+
+                    <div class="month" id="sep">
+                        <span>SEP</span>
+                    </div>
+
+                    <div class="month" id="oct">
+                        <span>OCT</span>
+                    </div>
+
+                    <div class="month" id="nov">
+                        <span>NOV</span>
+                    </div>
+
+                    <div class="month" id="dec">
+                        <span>DEC</span>
+                    </div>
+
+                </div>
+
+
+                <div class="legend">
+
+                    <span>
+                        <i class="planting"></i>
+                        Planting
+                    </span>
+
+                    <span>
+                        <i class="growing"></i>
+                        Growing
+                    </span>
+
+                    <span>
+                        <i class="harvest"></i>
+                        Harvest
+                    </span>
+
+                </div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <div class="footer-logo">
+            🌱 AgriAtlas
+        </div>
+
+        <p>
+            An interactive guide to global agriculture.
+        </p>
+
+        <p class="copyright">
+            © 2026 AgriAtlas
+        </p>
+
+    </footer>
+
+
+    <script src="script.js"></script>
 
 </body>
 
