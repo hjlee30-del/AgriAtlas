@@ -1,8 +1,6 @@
 const crops = {
 
-    /* =========================
-       SOUTH KOREA
-    ========================= */
+    /* SOUTH KOREA */
 
     "korea-rice": {
         name: "🌾 Rice",
@@ -14,6 +12,9 @@ const crops = {
         planting: "May",
         growing: "June – August",
         harvest: "September – October",
+        plantingMonths: ["may"],
+        growingMonths: ["jun", "jul", "aug"],
+        harvestMonths: ["sep", "oct"],
         regions: "Jeolla, Chungcheong"
     },
 
@@ -27,6 +28,9 @@ const crops = {
         planting: "September – October",
         growing: "October – May",
         harvest: "May – June",
+        plantingMonths: ["sep", "oct"],
+        growingMonths: ["nov", "dec", "jan", "feb", "mar", "apr"],
+        harvestMonths: ["may", "jun"],
         regions: "Gyeongsang, Jeolla"
     },
 
@@ -40,6 +44,9 @@ const crops = {
         planting: "May – June",
         growing: "June – September",
         harvest: "September – October",
+        plantingMonths: ["may", "jun"],
+        growingMonths: ["jul", "aug"],
+        harvestMonths: ["sep", "oct"],
         regions: "Gyeongbuk, Jeonbuk"
     },
 
@@ -53,13 +60,13 @@ const crops = {
         planting: "May – June",
         growing: "June – September",
         harvest: "September – October",
+        plantingMonths: ["may", "jun"],
+        growingMonths: ["jul", "aug"],
+        harvestMonths: ["sep", "oct"],
         regions: "Gyeongbuk, Jeonbuk"
     },
 
-
-    /* =========================
-       JAPAN
-    ========================= */
+    /* JAPAN */
 
     "japan-rice": {
         name: "🌾 Rice",
@@ -71,6 +78,9 @@ const crops = {
         planting: "April – May",
         growing: "May – August",
         harvest: "September – October",
+        plantingMonths: ["apr", "may"],
+        growingMonths: ["jun", "jul", "aug"],
+        harvestMonths: ["sep", "oct"],
         regions: "Niigata, Akita, Hokkaido"
     },
 
@@ -84,13 +94,13 @@ const crops = {
         planting: "Spring",
         growing: "Spring – Autumn",
         harvest: "April – October",
+        plantingMonths: ["mar", "apr", "may"],
+        growingMonths: ["jun", "jul", "aug", "sep"],
+        harvestMonths: ["apr", "may", "jun", "jul", "aug", "sep", "oct"],
         regions: "Shizuoka, Kagoshima"
     },
 
-
-    /* =========================
-       INDIA
-    ========================= */
+    /* INDIA */
 
     "india-wheat": {
         name: "🌾 Wheat",
@@ -102,6 +112,9 @@ const crops = {
         planting: "October – November",
         growing: "December – March",
         harvest: "April – May",
+        plantingMonths: ["oct", "nov"],
+        growingMonths: ["dec", "jan", "feb", "mar"],
+        harvestMonths: ["apr", "may"],
         regions: "Punjab, Haryana, Uttar Pradesh"
     },
 
@@ -115,6 +128,9 @@ const crops = {
         planting: "June – July",
         growing: "July – September",
         harvest: "October – November",
+        plantingMonths: ["jun", "jul"],
+        growingMonths: ["aug", "sep"],
+        harvestMonths: ["oct", "nov"],
         regions: "West Bengal, Uttar Pradesh, Punjab"
     },
 
@@ -128,13 +144,13 @@ const crops = {
         planting: "April – June",
         growing: "June – October",
         harvest: "October – January",
+        plantingMonths: ["apr", "may", "jun"],
+        growingMonths: ["jul", "aug", "sep"],
+        harvestMonths: ["oct", "nov", "dec", "jan"],
         regions: "Gujarat, Maharashtra, Telangana"
     },
 
-
-    /* =========================
-       BRAZIL
-    ========================= */
+    /* BRAZIL */
 
     "brazil-coffee": {
         name: "☕ Coffee",
@@ -146,6 +162,13 @@ const crops = {
         planting: "Varies by region",
         growing: "Year-round",
         harvest: "May – September",
+        plantingMonths: [],
+        growingMonths: [
+            "jan", "feb", "mar", "apr",
+            "may", "jun", "jul", "aug",
+            "sep", "oct", "nov", "dec"
+        ],
+        harvestMonths: ["may", "jun", "jul", "aug", "sep"],
         regions: "Minas Gerais, São Paulo"
     },
 
@@ -159,13 +182,13 @@ const crops = {
         planting: "September – December",
         growing: "October – February",
         harvest: "January – April",
+        plantingMonths: ["sep", "oct", "nov", "dec"],
+        growingMonths: ["oct", "nov", "dec"],
+        harvestMonths: ["jan", "feb", "mar", "apr"],
         regions: "Mato Grosso, Paraná"
     },
 
-
-    /* =========================
-       UNITED STATES
-    ========================= */
+    /* UNITED STATES */
 
     "usa-corn": {
         name: "🌽 Corn",
@@ -177,6 +200,9 @@ const crops = {
         planting: "April – May",
         growing: "May – August",
         harvest: "September – October",
+        plantingMonths: ["apr", "may"],
+        growingMonths: ["jun", "jul", "aug"],
+        harvestMonths: ["sep", "oct"],
         regions: "Iowa, Illinois, Nebraska"
     },
 
@@ -190,6 +216,9 @@ const crops = {
         planting: "April – May",
         growing: "May – September",
         harvest: "September – October",
+        plantingMonths: ["apr", "may"],
+        growingMonths: ["jun", "jul", "aug"],
+        harvestMonths: ["sep", "oct"],
         regions: "Iowa, Illinois, Minnesota"
     }
 
@@ -486,164 +515,42 @@ function activateMonths(info) {
 
     clearTimeline();
 
-    const stages = {
-        planting: parseMonths(info.planting),
-        growing: parseMonths(info.growing),
-        harvest: parseMonths(info.harvest)
-    };
+    /* Growing season */
+    info.growingMonths.forEach(month => {
+        document
+            .getElementById(month)
+            .classList
+            .add("growing-active");
+    });
 
-
-    stages.planting.forEach(month => {
+    /* Planting season */
+    info.plantingMonths.forEach(month => {
+        document
+            .getElementById(month)
+            .classList
+            .remove("growing-active");
 
         document
             .getElementById(month)
             .classList
             .add("planting-active");
-
     });
 
-
-    stages.growing.forEach(month => {
-
+    /* Harvest season */
+    info.harvestMonths.forEach(month => {
         document
             .getElementById(month)
             .classList
-            .add("growing-active");
-
-    });
-
-
-    stages.harvest.forEach(month => {
+            .remove(
+                "planting-active",
+                "growing-active"
+            );
 
         document
             .getElementById(month)
             .classList
             .add("harvest-active");
-
     });
-
-}
-function parseMonths(text) {
-
-    const monthNumbers = {
-        january: 1,
-        february: 2,
-        march: 3,
-        april: 4,
-        may: 5,
-        june: 6,
-        july: 7,
-        august: 8,
-        september: 9,
-        october: 10,
-        november: 11,
-        december: 12
-    };
-
-    const monthIDs = {
-        1: "jan",
-        2: "feb",
-        3: "mar",
-        4: "apr",
-        5: "may",
-        6: "jun",
-        7: "jul",
-        8: "aug",
-        9: "sep",
-        10: "oct",
-        11: "nov",
-        12: "dec"
-    };
-
-    const lowerText = text.toLowerCase();
-
-    /* Year-round crops */
-
-    if (lowerText.includes("year-round")) {
-
-        return Object.values(monthIDs);
-
-    }
-
-
-    /* Seasonal descriptions */
-
-    if (lowerText.includes("spring")) {
-
-        return ["mar", "apr", "may"];
-
-    }
-
-
-    if (lowerText.includes("summer")) {
-
-        return ["jun", "jul", "aug"];
-
-    }
-
-
-    if (lowerText.includes("autumn") ||
-        lowerText.includes("fall")) {
-
-        return ["sep", "oct", "nov"];
-
-    }
-
-
-    if (lowerText.includes("winter")) {
-
-        return ["dec", "jan", "feb"];
-
-    }
-
-
-    /* Find month names */
-
-    const found = [];
-
-    Object.keys(monthNumbers).forEach(month => {
-
-        if (lowerText.includes(month)) {
-
-            found.push(monthNumbers[month]);
-
-        }
-
-    });
-
-
-    if (found.length === 0) {
-
-        return [];
-
-    }
-
-
-    /* If there are two or more months,
-       fill the entire range */
-
-    if (found.length >= 2) {
-
-        const start = Math.min(...found);
-        const end = Math.max(...found);
-
-        const result = [];
-
-        for (let i = start; i <= end; i++) {
-
-            result.push(monthIDs[i]);
-
-        }
-
-        return result;
-
-    }
-
-
-    /* Single month */
-
-    return [monthIDs[found[0]]];
-
 }
 
 /* =================================
