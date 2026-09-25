@@ -525,39 +525,126 @@ function activateMonths(info) {
 }
 function parseMonths(text) {
 
-    const months = {
-        january: "jan",
-        february: "feb",
-        march: "mar",
-        april: "apr",
-        may: "may",
-        june: "jun",
-        july: "jul",
-        august: "aug",
-        september: "sep",
-        october: "oct",
-        november: "nov",
-        december: "dec"
+    const monthNumbers = {
+        january: 1,
+        february: 2,
+        march: 3,
+        april: 4,
+        may: 5,
+        june: 6,
+        july: 7,
+        august: 8,
+        september: 9,
+        october: 10,
+        november: 11,
+        december: 12
+    };
+
+    const monthIDs = {
+        1: "jan",
+        2: "feb",
+        3: "mar",
+        4: "apr",
+        5: "may",
+        6: "jun",
+        7: "jul",
+        8: "aug",
+        9: "sep",
+        10: "oct",
+        11: "nov",
+        12: "dec"
     };
 
     const lowerText = text.toLowerCase();
 
-    const foundMonths = [];
+    /* Year-round crops */
 
-    Object.keys(months).forEach(month => {
+    if (lowerText.includes("year-round")) {
+
+        return Object.values(monthIDs);
+
+    }
+
+
+    /* Seasonal descriptions */
+
+    if (lowerText.includes("spring")) {
+
+        return ["mar", "apr", "may"];
+
+    }
+
+
+    if (lowerText.includes("summer")) {
+
+        return ["jun", "jul", "aug"];
+
+    }
+
+
+    if (lowerText.includes("autumn") ||
+        lowerText.includes("fall")) {
+
+        return ["sep", "oct", "nov"];
+
+    }
+
+
+    if (lowerText.includes("winter")) {
+
+        return ["dec", "jan", "feb"];
+
+    }
+
+
+    /* Find month names */
+
+    const found = [];
+
+    Object.keys(monthNumbers).forEach(month => {
 
         if (lowerText.includes(month)) {
 
-            foundMonths.push(months[month]);
+            found.push(monthNumbers[month]);
 
         }
 
     });
 
-    return foundMonths;
+
+    if (found.length === 0) {
+
+        return [];
+
+    }
+
+
+    /* If there are two or more months,
+       fill the entire range */
+
+    if (found.length >= 2) {
+
+        const start = Math.min(...found);
+        const end = Math.max(...found);
+
+        const result = [];
+
+        for (let i = start; i <= end; i++) {
+
+            result.push(monthIDs[i]);
+
+        }
+
+        return result;
+
+    }
+
+
+    /* Single month */
+
+    return [monthIDs[found[0]]];
 
 }
-
 
 /* =================================
    COUNTRY CHANGE EVENT
