@@ -466,7 +466,12 @@ function clearTimeline() {
 
     months.forEach(month => {
 
-        month.classList.remove("active");
+        month.classList.remove(
+            "active",
+            "planting-active",
+            "growing-active",
+            "harvest-active"
+        );
 
     });
 
@@ -479,66 +484,77 @@ function clearTimeline() {
 
 function activateMonths(info) {
 
-    const seasonText =
-        (
-            info.planting + " " +
-            info.growing + " " +
-            info.harvest
-        ).toLowerCase();
+    clearTimeline();
 
-
-    const monthNames = [
-
-        "jan",
-        "feb",
-        "mar",
-        "apr",
-        "may",
-        "jun",
-        "jul",
-        "aug",
-        "sep",
-        "oct",
-        "nov",
-        "dec"
-
-    ];
-
-
-    const fullMonths = {
-
-        jan: "january",
-        feb: "february",
-        mar: "march",
-        apr: "april",
-        may: "may",
-        jun: "june",
-        jul: "july",
-        aug: "august",
-        sep: "september",
-        oct: "october",
-        nov: "november",
-        dec: "december"
-
+    const stages = {
+        planting: parseMonths(info.planting),
+        growing: parseMonths(info.growing),
+        harvest: parseMonths(info.harvest)
     };
 
 
-    monthNames.forEach(month => {
+    stages.planting.forEach(month => {
 
-        if (
-            seasonText.includes(
-                fullMonths[month]
-            )
-        ) {
+        document
+            .getElementById(month)
+            .classList
+            .add("planting-active");
 
-            document
-                .getElementById(month)
-                .classList
-                .add("active");
+    });
+
+
+    stages.growing.forEach(month => {
+
+        document
+            .getElementById(month)
+            .classList
+            .add("growing-active");
+
+    });
+
+
+    stages.harvest.forEach(month => {
+
+        document
+            .getElementById(month)
+            .classList
+            .add("harvest-active");
+
+    });
+
+}
+function parseMonths(text) {
+
+    const months = {
+        january: "jan",
+        february: "feb",
+        march: "mar",
+        april: "apr",
+        may: "may",
+        june: "jun",
+        july: "jul",
+        august: "aug",
+        september: "sep",
+        october: "oct",
+        november: "nov",
+        december: "dec"
+    };
+
+    const lowerText = text.toLowerCase();
+
+    const foundMonths = [];
+
+    Object.keys(months).forEach(month => {
+
+        if (lowerText.includes(month)) {
+
+            foundMonths.push(months[month]);
 
         }
 
     });
+
+    return foundMonths;
 
 }
 
