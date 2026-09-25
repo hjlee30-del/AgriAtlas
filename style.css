@@ -463,3 +463,22 @@ footer p {
     }
 
 }
+/* Season Timeline Colors */
+
+.month.planting-active {
+    background: #d8b45c;
+    color: white;
+    font-weight: bold;
+}
+
+.month.growing-active {
+    background: #55a06a;
+    color: white;
+    font-weight: bold;
+}
+
+.month.harvest-active {
+    background: #b47b45;
+    color: white;
+    font-weight: bold;
+}
