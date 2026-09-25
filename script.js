@@ -1,112 +1,305 @@
 const crops = {
 
+    /* =========================
+       SOUTH KOREA
+    ========================= */
+
     "korea-rice": {
-
         name: "🌾 Rice",
-
+        commonName: "Rice",
+        scientificName: "Oryza sativa",
         country: "South Korea",
-
         variety: "Japonica rice",
-
         climate: "Temperate / humid",
-
         planting: "May",
-
         growing: "June – August",
-
         harvest: "September – October",
-
         regions: "Jeolla, Chungcheong"
-
     },
 
+    "korea-garlic": {
+        name: "🧄 Garlic",
+        commonName: "Garlic",
+        scientificName: "Allium sativum",
+        country: "South Korea",
+        variety: "Korean garlic",
+        climate: "Cool temperate",
+        planting: "September – October",
+        growing: "October – May",
+        harvest: "May – June",
+        regions: "Gyeongsang, Jeolla"
+    },
+
+    "korea-soybean": {
+        name: "🫘 Soybean",
+        commonName: "Soybean",
+        scientificName: "Glycine max",
+        country: "South Korea",
+        variety: "Yellow soybean",
+        climate: "Temperate",
+        planting: "May – June",
+        growing: "June – September",
+        harvest: "September – October",
+        regions: "Gyeongbuk, Jeonbuk"
+    },
+
+    "korea-black-soybean": {
+        name: "🫘 Black Soybean",
+        commonName: "Black soybean",
+        scientificName: "Glycine max",
+        country: "South Korea",
+        variety: "Heuktae / Seoritae",
+        climate: "Temperate",
+        planting: "May – June",
+        growing: "June – September",
+        harvest: "September – October",
+        regions: "Gyeongbuk, Jeonbuk"
+    },
+
+
+    /* =========================
+       JAPAN
+    ========================= */
 
     "japan-rice": {
-
         name: "🌾 Rice",
-
+        commonName: "Rice",
+        scientificName: "Oryza sativa",
         country: "Japan",
-
         variety: "Japonica rice",
-
         climate: "Humid temperate",
-
         planting: "April – May",
-
         growing: "May – August",
-
         harvest: "September – October",
-
         regions: "Niigata, Akita, Hokkaido"
-
     },
 
+    "japan-tea": {
+        name: "🍵 Tea",
+        commonName: "Tea plant",
+        scientificName: "Camellia sinensis",
+        country: "Japan",
+        variety: "Yabukita",
+        climate: "Humid temperate / subtropical",
+        planting: "Spring",
+        growing: "Spring – Autumn",
+        harvest: "April – October",
+        regions: "Shizuoka, Kagoshima"
+    },
+
+
+    /* =========================
+       INDIA
+    ========================= */
 
     "india-wheat": {
-
         name: "🌾 Wheat",
-
+        commonName: "Wheat",
+        scientificName: "Triticum aestivum",
         country: "India",
-
         variety: "Bread wheat",
-
         climate: "Cool and relatively dry",
-
         planting: "October – November",
-
         growing: "December – March",
-
         harvest: "April – May",
-
         regions: "Punjab, Haryana, Uttar Pradesh"
-
     },
 
+    "india-rice": {
+        name: "🌾 Rice",
+        commonName: "Rice",
+        scientificName: "Oryza sativa",
+        country: "India",
+        variety: "Indica rice",
+        climate: "Tropical / subtropical",
+        planting: "June – July",
+        growing: "July – September",
+        harvest: "October – November",
+        regions: "West Bengal, Uttar Pradesh, Punjab"
+    },
+
+    "india-cotton": {
+        name: "🧵 Cotton",
+        commonName: "Cotton",
+        scientificName: "Gossypium spp.",
+        country: "India",
+        variety: "Indian cotton",
+        climate: "Warm and semi-arid",
+        planting: "April – June",
+        growing: "June – October",
+        harvest: "October – January",
+        regions: "Gujarat, Maharashtra, Telangana"
+    },
+
+
+    /* =========================
+       BRAZIL
+    ========================= */
 
     "brazil-coffee": {
-
         name: "☕ Coffee",
-
+        commonName: "Coffee",
+        scientificName: "Coffea arabica / Coffea canephora",
         country: "Brazil",
-
         variety: "Arabica / Robusta",
-
         climate: "Tropical / subtropical",
-
         planting: "Varies by region",
-
         growing: "Year-round",
-
         harvest: "May – September",
-
         regions: "Minas Gerais, São Paulo"
+    },
 
+    "brazil-soybean": {
+        name: "🫘 Soybean",
+        commonName: "Soybean",
+        scientificName: "Glycine max",
+        country: "Brazil",
+        variety: "Tropical soybean",
+        climate: "Tropical / subtropical",
+        planting: "September – December",
+        growing: "October – February",
+        harvest: "January – April",
+        regions: "Mato Grosso, Paraná"
     },
 
 
+    /* =========================
+       UNITED STATES
+    ========================= */
+
     "usa-corn": {
-
         name: "🌽 Corn",
-
+        commonName: "Corn",
+        scientificName: "Zea mays",
         country: "United States",
-
         variety: "Field corn",
-
         climate: "Temperate",
-
         planting: "April – May",
-
         growing: "May – August",
-
         harvest: "September – October",
-
         regions: "Iowa, Illinois, Nebraska"
+    },
 
+    "usa-soybean": {
+        name: "🫘 Soybean",
+        commonName: "Soybean",
+        scientificName: "Glycine max",
+        country: "United States",
+        variety: "Field soybean",
+        climate: "Temperate",
+        planting: "April – May",
+        growing: "May – September",
+        harvest: "September – October",
+        regions: "Iowa, Illinois, Minnesota"
     }
 
 };
 
 
+/* =================================
+   COUNTRY → AVAILABLE CROPS
+================================= */
+
+const countryCrops = {
+
+    korea: [
+        "rice",
+        "garlic",
+        "soybean",
+        "black-soybean"
+    ],
+
+    japan: [
+        "rice",
+        "tea"
+    ],
+
+    india: [
+        "wheat",
+        "rice",
+        "cotton"
+    ],
+
+    brazil: [
+        "coffee",
+        "soybean"
+    ],
+
+    usa: [
+        "corn",
+        "soybean"
+    ]
+
+};
+
+
+/* =================================
+   CROP DISPLAY NAMES
+================================= */
+
+function getCropName(crop) {
+
+    const names = {
+
+        rice: "🌾 Rice",
+        garlic: "🧄 Garlic",
+        soybean: "🫘 Soybean",
+        "black-soybean": "🫘 Black Soybean",
+        tea: "🍵 Tea",
+        wheat: "🌾 Wheat",
+        cotton: "🧵 Cotton",
+        coffee: "☕ Coffee",
+        corn: "🌽 Corn"
+
+    };
+
+    return names[crop] || crop;
+
+}
+
+
+/* =================================
+   UPDATE CROP DROPDOWN
+================================= */
+
+function updateCropOptions() {
+
+    const country =
+        document.getElementById("country").value;
+
+    const cropSelect =
+        document.getElementById("crop");
+
+    cropSelect.innerHTML = `
+        <option value="">
+            Select a crop
+        </option>
+    `;
+
+    if (!country) {
+        return;
+    }
+
+    countryCrops[country].forEach(crop => {
+
+        const option =
+            document.createElement("option");
+
+        option.value = crop;
+
+        option.textContent =
+            getCropName(crop);
+
+        cropSelect.appendChild(option);
+
+    });
+
+}
+
+
+/* =================================
+   SHOW CROP INFORMATION
+================================= */
 
 function showCrop() {
 
@@ -116,15 +309,14 @@ function showCrop() {
     const crop =
         document.getElementById("crop").value;
 
+    const key =
+        country + "-" + crop;
 
-    const key = country + "-" + crop;
-
-    const info = crops[key];
-
+    const info =
+        crops[key];
 
     const display =
         document.getElementById("crop-info");
-
 
     clearTimeline();
 
@@ -140,12 +332,12 @@ function showCrop() {
                 </div>
 
                 <h3>
-                    Data coming soon
+                    Select a crop to begin
                 </h3>
 
                 <p>
-                    This country and crop combination
-                    has not been added yet.
+                    Choose a country and crop
+                    to explore agricultural information.
                 </p>
 
             </div>
@@ -179,7 +371,18 @@ function showCrop() {
 
             <div class="info-box">
 
-                <span>Variety</span>
+                <span>Scientific Name</span>
+
+                <strong>
+                    <i>${info.scientificName}</i>
+                </strong>
+
+            </div>
+
+
+            <div class="info-box">
+
+                <span>Variety / Type</span>
 
                 <strong>
                     ${info.variety}
@@ -252,6 +455,9 @@ function showCrop() {
 }
 
 
+/* =================================
+   CLEAR TIMELINE
+================================= */
 
 function clearTimeline() {
 
@@ -267,13 +473,18 @@ function clearTimeline() {
 }
 
 
+/* =================================
+   ACTIVATE SEASON MONTHS
+================================= */
 
 function activateMonths(info) {
 
     const seasonText =
-        info.planting + " " +
-        info.growing + " " +
-        info.harvest;
+        (
+            info.planting + " " +
+            info.growing + " " +
+            info.harvest
+        ).toLowerCase();
 
 
     const monthNames = [
@@ -294,32 +505,7 @@ function activateMonths(info) {
     ];
 
 
-    monthNames.forEach(month => {
-
-        if (
-            seasonText
-                .toLowerCase()
-                .includes(
-                    getFullMonth(month)
-                )
-        ) {
-
-            document
-                .getElementById(month)
-                .classList
-                .add("active");
-
-        }
-
-    });
-
-}
-
-
-
-function getFullMonth(shortMonth) {
-
-    const months = {
+    const fullMonths = {
 
         jan: "january",
         feb: "february",
@@ -336,6 +522,34 @@ function getFullMonth(shortMonth) {
 
     };
 
-    return months[shortMonth];
+
+    monthNames.forEach(month => {
+
+        if (
+            seasonText.includes(
+                fullMonths[month]
+            )
+        ) {
+
+            document
+                .getElementById(month)
+                .classList
+                .add("active");
+
+        }
+
+    });
 
 }
+
+
+/* =================================
+   COUNTRY CHANGE EVENT
+================================= */
+
+document
+    .getElementById("country")
+    .addEventListener(
+        "change",
+        updateCropOptions
+    );
