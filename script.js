@@ -769,7 +769,7 @@ const weatherLocations = {
 
 
 async function updateWeather(country) {
-
+console.log("Weather function called:", country);
     const location = weatherLocations[country];
 
     if (!location) {
