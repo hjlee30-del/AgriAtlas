@@ -572,8 +572,10 @@ const mapHeight = 550;
 
 const projection = d3
     .geoNaturalEarth1()
-    .scale(160)
-    .translate([mapWidth / 2, mapHeight / 2]);
+    .fitSize(
+        [mapWidth, mapHeight],
+        { type: "Sphere" }
+    );
 
 const path = d3.geoPath()
     .projection(projection);
@@ -584,78 +586,101 @@ const tooltip =
 const countryName =
     document.getElementById("map-country-name");
 
-d3.json(
-    "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json"
-).then(world => {
 
-    const countries =
-        topojson.feature(
-            world,
-            world.objects.countries
+fetch(
+    "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json"
+)
+    .then(response => response.json())
+
+    .then(world => {
+
+        const countries =
+            topojson.feature(
+                world,
+                world.objects.countries
+            );
+
+        mapSvg
+            .selectAll(".country")
+            .data(countries.features)
+            .join("path")
+            .attr("class", "country")
+            .attr("d", path)
+
+            .on("mouseenter", function(event, d) {
+
+                d3.select(this)
+                    .classed(
+                        "country-hover",
+                        true
+                    );
+
+                countryName.textContent =
+                    getMapCountryName(d.id);
+
+                tooltip.style.display = "flex";
+            })
+
+            .on("mousemove", function(event) {
+
+                const rect =
+                    mapSvg
+                        .node()
+                        .getBoundingClientRect();
+
+                tooltip.style.left =
+                    (event.clientX - rect.left + 15) + "px";
+
+                tooltip.style.top =
+                    (event.clientY - rect.top + 15) + "px";
+            })
+
+            .on("mouseleave", function() {
+
+                d3.select(this)
+                    .classed(
+                        "country-hover",
+                        false
+                    );
+
+                tooltip.style.display = "none";
+            })
+
+            .on("click", function(event, d) {
+
+                const country =
+                    getMapCountryKey(d.id);
+
+                if (!country) {
+                    return;
+                }
+
+                const countrySelect =
+                    document.getElementById("country");
+
+                countrySelect.value = country;
+
+                updateCropOptions();
+
+                document.getElementById("crop").value = "";
+
+                document
+                    .getElementById("explorer")
+                    .scrollIntoView({
+                        behavior: "smooth"
+                    });
+            });
+
+    })
+
+    .catch(error => {
+
+        console.error(
+            "AgriAtlas map failed to load:",
+            error
         );
 
-    mapSvg
-        .selectAll(".country")
-        .data(countries.features)
-        .enter()
-        .append("path")
-        .attr("class", "country")
-        .attr("d", path)
-
-        .on("mouseenter", function(event, d) {
-
-            d3.select(this)
-                .classed("country-hover", true);
-
-            countryName.textContent =
-                getMapCountryName(d.id);
-
-            tooltip.style.display = "flex";
-        })
-
-        .on("mousemove", function(event) {
-
-            tooltip.style.left =
-                (event.offsetX + 15) + "px";
-
-            tooltip.style.top =
-                (event.offsetY + 15) + "px";
-        })
-
-        .on("mouseleave", function() {
-
-            d3.select(this)
-                .classed("country-hover", false);
-
-            tooltip.style.display = "none";
-        })
-
-        .on("click", function(event, d) {
-
-            const country =
-                getMapCountryKey(d.id);
-
-            if (!country) {
-                return;
-            }
-
-            document
-                .getElementById("country")
-                .value = country;
-
-            updateCropOptions();
-
-            document
-                .getElementById("crop")
-                .value = "";
-
-            document
-                .getElementById("explorer")
-                .scrollIntoView({
-                    behavior: "smooth"
-                });
-        });
-});
+    });
 
 
 function getMapCountryName(id) {
