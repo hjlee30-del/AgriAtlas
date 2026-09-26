@@ -756,8 +756,8 @@ const weatherLocations = {
 
     brazil: {
         name: "Minas Gerais, Brazil",
-        latitude: -19.78,
-        longitude: -43.95
+        latitude: -19.92,
+        longitude: -43.94
     },
 
     usa: {
