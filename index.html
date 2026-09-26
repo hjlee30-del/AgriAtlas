@@ -2,43 +2,44 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>AgriAtlas | Global Agriculture Explorer</title>
 
     <link rel="stylesheet" href="style.css">
-
 </head>
-
 
 <body>
 
-
-    <!-- Navigation -->
+    <!-- NAVIGATION -->
 
     <nav>
 
         <div class="logo">
-             AgriAtlas
+            AgriAtlas
         </div>
 
         <div class="nav-links">
 
-            <a href="#">Home</a>
-            <a href="#">Explore</a>
-            <a href="#">About</a>
+            <a href="#">
+                Home
+            </a>
+
+            <a href="#explorer">
+                Explore
+            </a>
+
+            <a href="#world-map">
+                About
+            </a>
 
         </div>
 
     </nav>
 
 
-
-    <!-- Hero Section -->
+    <!-- HERO -->
 
     <header class="hero">
 
@@ -53,9 +54,7 @@
             </h1>
 
             <p class="hero-description">
-
                 The ultimate calendar for the world's agriculture.
-
             </p>
 
             <a href="#explorer" class="hero-button">
@@ -67,8 +66,7 @@
     </header>
 
 
-
-    <!-- Explorer -->
+    <!-- CROP EXPLORER -->
 
     <main id="explorer">
 
@@ -85,15 +83,13 @@
                 </h2>
 
                 <p>
-                    Select a country and crop to discover
-                    its agricultural characteristics.
+                    Select a country and crop to discover its agricultural characteristics.
                 </p>
 
             </div>
 
 
-
-            <!-- Selection -->
+            <!-- COUNTRY + CROP SELECTORS -->
 
             <div class="selection-panel">
 
@@ -110,29 +106,28 @@
                         </option>
 
                         <option value="korea">
-                            🇰🇷 South Korea
+                            South Korea
                         </option>
 
                         <option value="japan">
-                            🇯🇵 Japan
+                            Japan
                         </option>
 
                         <option value="india">
-                            🇮🇳 India
+                            India
                         </option>
 
                         <option value="brazil">
-                            🇧🇷 Brazil
+                            Brazil
                         </option>
 
                         <option value="usa">
-                            🇺🇸 United States
+                            United States
                         </option>
 
                     </select>
 
                 </div>
-
 
 
                 <div class="selector">
@@ -147,22 +142,6 @@
                             Select a crop
                         </option>
 
-                        <option value="rice">
-                             Rice
-                        </option>
-
-                        <option value="wheat">
-                             Wheat
-                        </option>
-
-                        <option value="corn">
-                             Corn
-                        </option>
-
-                        <option value="coffee">
-                             Coffee
-                        </option>
-
                     </select>
 
                 </div>
@@ -175,8 +154,7 @@
             </div>
 
 
-
-            <!-- Crop Information -->
+            <!-- CROP INFORMATION -->
 
             <section id="crop-info" class="crop-card">
 
@@ -187,8 +165,7 @@
                     </h3>
 
                     <p>
-                        Choose a country and crop above
-                        to explore agricultural information.
+                        Choose a country and crop above to explore agricultural information.
                     </p>
 
                 </div>
@@ -196,8 +173,7 @@
             </section>
 
 
-
-            <!-- Season Timeline -->
+            <!-- GROWING SEASON -->
 
             <section class="season-section">
 
@@ -293,8 +269,58 @@
     </main>
 
 
+    <!-- WORLD MAP -->
 
-    <!-- Footer -->
+    <section class="world-map-section" id="world-map">
+
+        <div class="map-heading">
+
+            <p class="eyebrow">
+                GLOBAL AGRICULTURE
+            </p>
+
+            <h2>
+                Explore Agriculture Around the World
+            </h2>
+
+            <p>
+                Select a country to discover its crops,
+                growing seasons, and agricultural characteristics.
+            </p>
+
+        </div>
+
+
+        <div class="map-container">
+
+            <div class="map-wrapper">
+
+                <svg
+                    id="world-map-svg"
+                    viewBox="0 0 1000 550">
+                </svg>
+
+
+                <div
+                    id="map-tooltip"
+                    class="map-tooltip">
+
+                    <strong id="map-country-name"></strong>
+
+                    <span>
+                        Click to explore
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
 
     <footer>
 
@@ -312,38 +338,15 @@
 
     </footer>
 
-<script src="https://d3js.org/d3.v7.min.js"></script>
-<script src="https://unpkg.com/topojson-client@3"></script>
+
+    <!-- JAVASCRIPT -->
+
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <script src="https://unpkg.com/topojson-client@3"></script>
+
     <script src="script.js"></script>
 
 </body>
 
 </html>
-
-<section class="world-map-section" id="world-map">
-
-    <div class="map-heading">
-        <p class="eyebrow">GLOBAL AGRICULTURE</p>
-
-        <h2>Explore Agriculture Around the World</h2>
-
-        <p>
-            Select a country to discover its crops,
-            growing seasons, and agricultural characteristics.
-        </p>
-    </div>
-
-    <div class="map-container">
-
-       <div class="map-wrapper">
-    <svg id="world-map-svg" viewBox="0 0 1000 550"></svg>
-
-    <div id="map-tooltip" class="map-tooltip">
-        <strong id="map-country-name"></strong>
-        <span>Click to explore</span>
-    </div>
-</div>
-
-    </div>
-
-</section>
