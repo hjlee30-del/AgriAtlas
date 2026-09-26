@@ -335,20 +335,23 @@ function updateCropOptions() {
         return;
     }
 
-    countryCrops[country].forEach(crop => {
+    Object.entries(cropDatabase).forEach(
+        ([crop, data]) => {
 
-        const option =
-            document.createElement("option");
+            if (data.countries.includes(country)) {
 
-        option.value = crop;
+                const option =
+                    document.createElement("option");
 
-        option.textContent =
-            getCropName(crop);
+                option.value = crop;
 
-        cropSelect.appendChild(option);
+                option.textContent =
+                    data.name;
 
-    });
-
+                cropSelect.appendChild(option);
+            }
+        }
+    );
 }
 
 
