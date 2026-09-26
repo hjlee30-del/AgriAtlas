@@ -538,3 +538,55 @@ footer p {
 .map-placeholder span {
     font-size: 15px;
 }
+/* Interactive World Map */
+
+.map-wrapper {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+#world-map-svg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+.country {
+    fill: #26352b;
+    stroke: #526257;
+    stroke-width: 0.7px;
+    transition: fill 0.2s ease;
+    cursor: pointer;
+}
+
+.country:hover,
+.country-hover {
+    fill: #55a06a;
+    stroke: #dce5de;
+    stroke-width: 1.2px;
+}
+
+.map-tooltip {
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    padding: 10px 14px;
+    background: #18221c;
+    border: 1px solid #526257;
+    border-radius: 8px;
+    color: white;
+    pointer-events: none;
+    z-index: 10;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.map-tooltip strong {
+    font-size: 14px;
+}
+
+.map-tooltip span {
+    color: #aebbb1;
+    font-size: 12px;
+}
