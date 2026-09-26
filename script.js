@@ -713,7 +713,7 @@ function getMapCountryName(id) {
         410: "South Korea",
         392: "Japan",
         356: "India",
-        76: "Brazil",
+        076: "Brazil",
         840: "United States"
     };
 
@@ -727,7 +727,7 @@ function getMapCountryKey(id) {
         410: "korea",
         392: "japan",
         356: "india",
-        76: "brazil",
+        076: "brazil",
         840: "usa"
     };
 
