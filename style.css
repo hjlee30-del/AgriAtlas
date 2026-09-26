@@ -482,3 +482,59 @@ footer p {
     color: white;
     font-weight: bold;
 }
+
+/* World Map Section */
+
+.world-map-section {
+    background: #18221c;
+    color: white;
+    padding: 80px 8%;
+    margin-top: 60px;
+}
+
+.world-map-section .map-heading {
+    max-width: 800px;
+    margin: 0 auto 40px;
+    text-align: center;
+}
+
+.world-map-section .map-heading h2 {
+    font-size: 38px;
+    margin: 10px 0 15px;
+}
+
+.world-map-section .map-heading p {
+    color: #b9c4bb;
+    font-size: 17px;
+    line-height: 1.6;
+}
+
+.map-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #111812;
+    border: 1px solid #344238;
+    border-radius: 18px;
+    padding: 30px;
+    min-height: 500px;
+}
+
+.map-placeholder {
+    min-height: 440px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #8f9d92;
+}
+
+.map-placeholder p {
+    font-size: 24px;
+    color: #dce5de;
+    margin: 0 0 8px;
+}
+
+.map-placeholder span {
+    font-size: 15px;
+}
