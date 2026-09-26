@@ -3,7 +3,7 @@ const crops = {
     /* SOUTH KOREA */
 
     "korea-rice": {
-        name: "🌾 Rice",
+        name: "Rice",
         commonName: "Rice",
         scientificName: "Oryza sativa",
         country: "South Korea",
@@ -19,7 +19,7 @@ const crops = {
     },
 
     "korea-garlic": {
-        name: "🧄 Garlic",
+        name: "Garlic",
         commonName: "Garlic",
         scientificName: "Allium sativum",
         country: "South Korea",
@@ -35,7 +35,7 @@ const crops = {
     },
 
     "korea-soybean": {
-        name: "🫘 Soybean",
+        name: "Soybean",
         commonName: "Soybean",
         scientificName: "Glycine max",
         country: "South Korea",
@@ -51,7 +51,7 @@ const crops = {
     },
 
     "korea-black-soybean": {
-        name: "🫘 Black Soybean",
+        name: "Black Soybean",
         commonName: "Black soybean",
         scientificName: "Glycine max",
         country: "South Korea",
@@ -69,7 +69,7 @@ const crops = {
     /* JAPAN */
 
     "japan-rice": {
-        name: "🌾 Rice",
+        name: "Rice",
         commonName: "Rice",
         scientificName: "Oryza sativa",
         country: "Japan",
@@ -85,7 +85,7 @@ const crops = {
     },
 
     "japan-tea": {
-        name: "🍵 Tea",
+        name: "Tea",
         commonName: "Tea plant",
         scientificName: "Camellia sinensis",
         country: "Japan",
@@ -103,7 +103,7 @@ const crops = {
     /* INDIA */
 
     "india-wheat": {
-        name: "🌾 Wheat",
+        name: "Wheat",
         commonName: "Wheat",
         scientificName: "Triticum aestivum",
         country: "India",
@@ -119,7 +119,7 @@ const crops = {
     },
 
     "india-rice": {
-        name: "🌾 Rice",
+        name: "Rice",
         commonName: "Rice",
         scientificName: "Oryza sativa",
         country: "India",
@@ -135,7 +135,7 @@ const crops = {
     },
 
     "india-cotton": {
-        name: "🧵 Cotton",
+        name: "Cotton",
         commonName: "Cotton",
         scientificName: "Gossypium spp.",
         country: "India",
@@ -153,7 +153,7 @@ const crops = {
     /* BRAZIL */
 
     "brazil-coffee": {
-        name: "☕ Coffee",
+        name: "Coffee",
         commonName: "Coffee",
         scientificName: "Coffea arabica / Coffea canephora",
         country: "Brazil",
@@ -173,7 +173,7 @@ const crops = {
     },
 
     "brazil-soybean": {
-        name: "🫘 Soybean",
+        name: "Soybean",
         commonName: "Soybean",
         scientificName: "Glycine max",
         country: "Brazil",
@@ -191,7 +191,7 @@ const crops = {
     /* UNITED STATES */
 
     "usa-corn": {
-        name: "🌽 Corn",
+        name: "Corn",
         commonName: "Corn",
         scientificName: "Zea mays",
         country: "United States",
@@ -207,7 +207,7 @@ const crops = {
     },
 
     "usa-soybean": {
-        name: "🫘 Soybean",
+        name: "Soybean",
         commonName: "Soybean",
         scientificName: "Glycine max",
         country: "United States",
@@ -270,15 +270,15 @@ function getCropName(crop) {
 
     const names = {
 
-        rice: "🌾 Rice",
-        garlic: "🧄 Garlic",
-        soybean: "🫘 Soybean",
-        "black-soybean": "🫘 Black Soybean",
-        tea: "🍵 Tea",
-        wheat: "🌾 Wheat",
-        cotton: "🧵 Cotton",
-        coffee: "☕ Coffee",
-        corn: "🌽 Corn"
+        rice: "Rice",
+        garlic: "Garlic",
+        soybean: "Soybean",
+        "black-soybean": "Black Soybean",
+        tea: "Tea",
+        wheat: "Wheat",
+        cotton: "Cotton",
+        coffee: "Coffee",
+        corn: "Corn"
 
     };
 
