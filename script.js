@@ -563,3 +563,124 @@ document
         "change",
         updateCropOptions
     );
+/* Interactive World Map */
+
+const mapSvg = d3.select("#world-map-svg");
+
+const mapWidth = 1000;
+const mapHeight = 550;
+
+const projection = d3
+    .geoNaturalEarth1()
+    .scale(160)
+    .translate([mapWidth / 2, mapHeight / 2]);
+
+const path = d3.geoPath()
+    .projection(projection);
+
+const tooltip =
+    document.getElementById("map-tooltip");
+
+const countryName =
+    document.getElementById("map-country-name");
+
+d3.json(
+    "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json"
+).then(world => {
+
+    const countries =
+        topojson.feature(
+            world,
+            world.objects.countries
+        );
+
+    mapSvg
+        .selectAll(".country")
+        .data(countries.features)
+        .enter()
+        .append("path")
+        .attr("class", "country")
+        .attr("d", path)
+
+        .on("mouseenter", function(event, d) {
+
+            d3.select(this)
+                .classed("country-hover", true);
+
+            countryName.textContent =
+                getMapCountryName(d.id);
+
+            tooltip.style.display = "flex";
+        })
+
+        .on("mousemove", function(event) {
+
+            tooltip.style.left =
+                (event.offsetX + 15) + "px";
+
+            tooltip.style.top =
+                (event.offsetY + 15) + "px";
+        })
+
+        .on("mouseleave", function() {
+
+            d3.select(this)
+                .classed("country-hover", false);
+
+            tooltip.style.display = "none";
+        })
+
+        .on("click", function(event, d) {
+
+            const country =
+                getMapCountryKey(d.id);
+
+            if (!country) {
+                return;
+            }
+
+            document
+                .getElementById("country")
+                .value = country;
+
+            updateCropOptions();
+
+            document
+                .getElementById("crop")
+                .value = "";
+
+            document
+                .getElementById("explorer")
+                .scrollIntoView({
+                    behavior: "smooth"
+                });
+        });
+});
+
+
+function getMapCountryName(id) {
+
+    const names = {
+        410: "South Korea",
+        392: "Japan",
+        356: "India",
+        76: "Brazil",
+        840: "United States"
+    };
+
+    return names[id] || "Country";
+}
+
+
+function getMapCountryKey(id) {
+
+    const countries = {
+        410: "korea",
+        392: "japan",
+        356: "india",
+        76: "brazil",
+        840: "usa"
+    };
+
+    return countries[id] || null;
+}
