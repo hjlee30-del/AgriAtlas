@@ -229,35 +229,61 @@ const crops = {
    COUNTRY → AVAILABLE CROPS
 ================================= */
 
-const countryCrops = {
+const cropDatabase = {
 
-    korea: [
-        "rice",
-        "garlic",
-        "soybean",
-        "black-soybean"
-    ],
+    rice: {
+        name: "Rice",
+        category: "Grains",
+        countries: ["korea", "japan", "india"]
+    },
 
-    japan: [
-        "rice",
-        "tea"
-    ],
+    garlic: {
+        name: "Garlic",
+        category: "Vegetables",
+        countries: ["korea"]
+    },
 
-    india: [
-        "wheat",
-        "rice",
-        "cotton"
-    ],
+    soybean: {
+        name: "Soybean",
+        category: "Legumes",
+        countries: ["korea", "brazil", "usa"]
+    },
 
-    brazil: [
-        "coffee",
-        "soybean"
-    ],
+    "black-soybean": {
+        name: "Black Soybean",
+        category: "Legumes",
+        countries: ["korea"]
+    },
 
-    usa: [
-        "corn",
-        "soybean"
-    ]
+    tea: {
+        name: "Tea",
+        category: "Beverage Crops",
+        countries: ["japan"]
+    },
+
+    wheat: {
+        name: "Wheat",
+        category: "Grains",
+        countries: ["india"]
+    },
+
+    cotton: {
+        name: "Cotton",
+        category: "Fiber Crops",
+        countries: ["india"]
+    },
+
+    coffee: {
+        name: "Coffee",
+        category: "Beverage Crops",
+        countries: ["brazil"]
+    },
+
+    corn: {
+        name: "Corn",
+        category: "Grains",
+        countries: ["usa"]
+    }
 
 };
 
