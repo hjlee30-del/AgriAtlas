@@ -675,31 +675,26 @@ fetch(
                 tooltip.style.display = "none";
             })
 
-            .on("click", function(event, d) {
+           .on("click", function(event, d) {
 
-                const country =
-                    getMapCountryKey(d.id);
+    const country =
+        getMapCountryKey(d.id);
 
-                if (!country) {
-                    return;
-                }
+    if (!country) {
+        return;
+    }
 
-                const countrySelect =
-                    document.getElementById("country");
+    const countrySelect =
+        document.getElementById("country");
 
-                countrySelect.value = country;
+    countrySelect.value = country;
 
-                updateCropOptions();
+    updateCropOptions();
 
-                document.getElementById("crop").value = "";
+    document.getElementById("crop").value = "";
 
-                document
-                    .getElementById("explorer")
-                    .scrollIntoView({
-                        behavior: "smooth"
-                    });
-            });
-
+    updateWeather(country);
+});
     })
 
     .catch(error => {
@@ -737,4 +732,112 @@ function getMapCountryKey(id) {
     };
 
     return countries[id] || null;
+}
+/* Live Weather */
+
+const weatherLocations = {
+    korea: {
+        name: "Jeolla, South Korea",
+        latitude: 35.16,
+        longitude: 126.85
+    },
+
+    japan: {
+        name: "Niigata, Japan",
+        latitude: 37.90,
+        longitude: 139.02
+    },
+
+    india: {
+        name: "Punjab, India",
+        latitude: 30.90,
+        longitude: 75.86
+    },
+
+    brazil: {
+        name: "Minas Gerais, Brazil",
+        latitude: -19.92,
+        longitude: -43.94
+    },
+
+    usa: {
+        name: "Iowa, United States",
+        latitude: 41.60,
+        longitude: -93.61
+    }
+};
+
+
+async function updateWeather(country) {
+
+    const location = weatherLocations[country];
+
+    if (!location) {
+        return;
+    }
+
+    const locationElement =
+        document.getElementById("weather-location");
+
+    const temperatureElement =
+        document.getElementById("weather-temperature");
+
+    const humidityElement =
+        document.getElementById("weather-humidity");
+
+    const statusElement =
+        document.getElementById("weather-status");
+
+    locationElement.textContent =
+        location.name;
+
+    temperatureElement.textContent =
+        "Loading...";
+
+    humidityElement.textContent =
+        "Loading...";
+
+    statusElement.textContent =
+        "Fetching current weather...";
+
+    const url =
+        `https://api.open-meteo.com/v1/forecast` +
+        `?latitude=${location.latitude}` +
+        `&longitude=${location.longitude}` +
+        `&current=temperature_2m,relative_humidity_2m` +
+        `&temperature_unit=celsius`;
+
+    try {
+
+        const response =
+            await fetch(url);
+
+        const data =
+            await response.json();
+
+        temperatureElement.textContent =
+            `${data.current.temperature_2m} °C`;
+
+        humidityElement.textContent =
+            `${data.current.relative_humidity_2m}%`;
+
+        statusElement.textContent =
+            "Current conditions";
+
+    } catch (error) {
+
+        console.error(
+            "Weather failed to load:",
+            error
+        );
+
+        temperatureElement.textContent =
+            "Unavailable";
+
+        humidityElement.textContent =
+            "Unavailable";
+
+        statusElement.textContent =
+            "Weather data could not be loaded.";
+    }
 }
