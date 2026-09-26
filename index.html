@@ -312,7 +312,8 @@
 
     </footer>
 
-
+<script src="https://cdn.jsdelivr.net/npm/d3@7"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
     <script src="script.js"></script>
 
 </body>
@@ -334,10 +335,14 @@
 
     <div class="map-container">
 
-        <div class="map-placeholder">
-            <p>Interactive World Map</p>
-            <span>Hover over a country to explore</span>
-        </div>
+       <div class="map-wrapper">
+    <svg id="world-map-svg" viewBox="0 0 1000 550"></svg>
+
+    <div id="map-tooltip" class="map-tooltip">
+        <strong id="map-country-name"></strong>
+        <span>Click to explore</span>
+    </div>
+</div>
 
     </div>
 
