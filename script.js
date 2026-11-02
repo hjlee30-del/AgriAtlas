@@ -707,29 +707,34 @@ fetch(
     });
 
 
+
 function getMapCountryName(id) {
 
     const names = {
-        410: "South Korea",
-        392: "Japan",
-        356: "India",
-        076: "Brazil",
-        840: "United States"
+        "410": "South Korea",
+        "392": "Japan",
+        "356": "India",
+        "076": "Brazil",
+        "840": "United States"
     };
 
-    return names[id] || "Country";
+    return names[String(id)] || "Country";
 }
 
 
 function getMapCountryKey(id) {
 
     const countries = {
-        410: "korea",
-        392: "japan",
-        356: "india",
-        076: "brazil",
-        840: "usa"
+        "410": "korea",
+        "392": "japan",
+        "356": "india",
+        "076": "brazil",
+        "840": "usa"
     };
+
+    return countries[String(id)] || null;
+}
+
 
     return countries[id] || null;
 }
