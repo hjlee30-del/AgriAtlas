@@ -734,10 +734,6 @@ function getMapCountryKey(id) {
 
     return countries[String(id)] || null;
 }
-
-
-    return countries[id] || null;
-}
 /* Live Weather */
 
 const weatherLocations = {
